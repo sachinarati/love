@@ -15,7 +15,9 @@
         }
 
         body {
-            margin: 0; padding: 0; height: 100vh; display: flex;
+            margin: 0; padding: 0; 
+            height: 100vh; height: -webkit-fill-available; /* Fix for mobile browser bars */
+            display: flex;
             justify-content: center; align-items: center;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #fff5f7 0%, #ffdee9 100%);
@@ -38,58 +40,68 @@
         .main-card {
             background: var(--soft-white);
             backdrop-filter: blur(15px);
-            border-radius: 40px;
-            padding: 45px 25px;
-            width: 85%; max-width: 380px;
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 30px 20px;
+            width: 85%; 
+            max-width: 350px; /* Perfect for mobile portrait */
             text-align: center;
-            box-shadow: 0 20px 45px rgba(255, 117, 140, 0.15);
+            box-shadow: 0 15px 35px rgba(255, 117, 140, 0.15);
             border: 1px solid #ffffff;
             position: relative; z-index: 10;
         }
 
         h1 { 
             font-family: 'Dancing Script', cursive; 
-            font-size: 3.2rem; margin: 0; 
+            font-size: 2.5rem; /* Reduced for mobile */
+            margin: 0; 
             background: linear-gradient(to right, var(--rose), var(--petal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .divider {
-            width: 60px; height: 3px; background: var(--gold);
-            margin: 10px auto 25px; border-radius: 10px;
+            width: 50px; height: 3px; background: var(--gold);
+            margin: 10px auto 20px; border-radius: 10px;
         }
 
         #message-display {
-            font-size: 1.1rem; line-height: 1.6; color: #444;
-            min-height: 120px; display: flex; align-items: center;
-            justify-content: center; margin-bottom: 30px;
-            padding: 0 15px; font-weight: 400;
+            font-size: 1rem; line-height: 1.5; color: #444;
+            min-height: 100px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 25px;
+            padding: 0 10px; font-weight: 400;
             transition: opacity 0.3s ease;
         }
 
         .btn {
             background: linear-gradient(45deg, var(--rose), var(--petal));
-            border: none; padding: 18px 0; border-radius: 100px;
-            color: white; font-weight: 600; font-size: 1.1rem;
-            cursor: pointer; box-shadow: 0 8px 25px rgba(255, 117, 140, 0.4);
-            transition: 0.3s; width: 85%;
+            border: none; padding: 16px 20px; border-radius: 100px;
+            color: white; font-weight: 600; font-size: 1rem;
+            cursor: pointer; box-shadow: 0 8px 20px rgba(255, 117, 140, 0.3);
+            transition: 0.3s; width: 100%; /* Full width on mobile */
+            -webkit-tap-highlight-color: transparent; /* Clean touch for mobile */
         }
 
-        .btn:active { transform: scale(0.95); box-shadow: 0 4px 10px rgba(255, 117, 140, 0.2); }
+        .btn:active { transform: scale(0.95); }
 
         .signature {
-            margin-top: 40px; font-size: 0.8rem; color: #999;
-            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;
+            margin-top: 30px; font-size: 0.75rem; color: #999;
+            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 15px;
             letter-spacing: 0.5px;
         }
 
-        .heart-icon { color: var(--rose); font-size: 1.2rem; margin-top: 8px; animation: pulse 1.5s infinite; }
+        .heart-icon { color: var(--rose); font-size: 1rem; margin-top: 8px; animation: pulse 1.5s infinite; }
         
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
+        }
+
+        /* Mobile Adjustments for very small screens */
+        @media (max-width: 320px) {
+            h1 { font-size: 2rem; }
+            .main-card { padding: 20px 15px; }
         }
     </style>
 </head>
@@ -101,42 +113,28 @@
         
         <div id="message-display">Tap the button for a piece of my heart... ✨</div>
         
-        <button class="btn" onclick="generateMessage()">Message for you from my ❤️ </button>
+        <button class="btn" onclick="generateMessage()">Message for you from my ❤️</button>
 
         <div class="signature">Made for Aarti with love from Sachin</div>
         <div class="heart-icon">❤️</div>
     </div>
 
     <script>
-        // Floating Heart Generator
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart-particle');
             heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.fontSize = Math.random() * 15 + 10 + 'px';
             heart.style.animationDuration = Math.random() * 2 + 4 + 's';
             document.body.appendChild(heart);
             setTimeout(() => { heart.remove(); }, 6000);
         }
-        setInterval(createHeart, 500);
+        setInterval(createHeart, 600);
 
-        // Infinite Message Engine (500+ Combinations)
-        const starts = [
-            "My dearest Aarti, ", "Hey beautiful, ", "To my soulmate, ", "Aarti, ", 
-            "Thinking of you, ", "Just wanted to remind you, ", "To my world, ", "Every single day, "
-        ];
-        const middles = [
-            "you make every moment feel like a dream ", "I am so lucky to have you in my life ", 
-            "your smile is the only thing I need ", "you are the most amazing woman I know ", 
-            "you bring so much peace and joy to me ", "my love for you grows stronger ", 
-            "I find myself missing you more than ever ", "you are always in my thoughts "
-        ];
-        const ends = [
-            "and I love you more than words can say. ❤️", "and I'm sending you all my love. ✨", 
-            "and I can't wait to be with you again. 🤗", "and you mean everything to me. 💍", 
-            "and I'm so proud of who you are. 🌹", "and you are my forever and always. 🥂"
-        ];
+        const starts = ["My dearest Aarti, ", "Hey beautiful, ", "To my soulmate, ", "Aarti, ", "Thinking of you, ", "Just wanted to remind you, ", "To my world, ", "Every single day, "];
+        const middles = ["you make every moment feel like a dream ", "I am so lucky to have you in my life ", "your smile is the only thing I need ", "you are the most amazing woman I know ", "you bring so much peace and joy to me ", "my love for you grows stronger ", "I find myself missing you more than ever ", "you are always in my thoughts "];
+        const ends = ["and I love you more than words can say. ❤️", "and I'm sending you all my love. ✨", "and I can't wait to be with you again. 🤗", "and you mean everything to me. 💍", "and I'm so proud of who you are. 🌹", "and you are my forever and always. 🥂"];
 
         const specialOnes = [
             "Distance is just a test to see how far love can travel. We are winning. ❤️",

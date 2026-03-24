@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Aarti ❤️</title>
+    <style>
+        :root {
+            --primary: #ff75c3;
+            --secondary: #ffa647;
+            --glass: rgba(255, 255, 255, 0.12);
+            --border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            margin: 0; padding: 0; height: 100vh; display: flex;
+            justify-content: center; align-items: center;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top right, #2c3e50, #000000);
+            color: white; overflow: hidden;
+        }
+
+        /* Floating Glow Effect */
+        .glow {
+            position: absolute; width: 400px; height: 400px;
+            background: radial-gradient(circle, var(--primary), transparent 70%);
+            filter: blur(100px); z-index: -1; opacity: 0.3;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-30%, -30%); }
+            to { transform: translate(30%, 30%); }
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 50px 30px;
+            width: 85%; max-width: 420px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        h1 { font-weight: 300; font-size: 2rem; margin: 0; color: var(--primary); text-shadow: 0 0 15px rgba(255,117,195,0.5); }
+        .subtext { font-size: 0.8rem; opacity: 0.6; margin-bottom: 40px; letter-spacing: 1px; }
+
+        #message-display {
+            font-size: 1.2rem; line-height: 1.6; min-height: 120px;
+            margin-bottom: 40px; display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.4s ease; font-weight: 400;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none; padding: 18px 45px; border-radius: 100px;
+            color: white; font-weight: 600; font-size: 1rem;
+            cursor: pointer; box-shadow: 0 10px 20px rgba(255, 117, 195, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        .signature {
+            margin-top: 50px; font-size: 0.75rem; opacity: 0.5;
+            padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    
+    <div class="glass-card">
+        <h1>For Aarti ❤️</h1>
+        <p class="subtext">A thousand reasons why you're special</p>
+        
+        <div id="message-display">Tap the button for a new message... ✨</div>
+        
+        <button class="btn" onclick="generateMessage()">New Message</button>
+
+        <div class="signature">Made for Aarti with love from Sachin</div>
+    </div>
+
+    <script>
+        const starts = ["My dearest Aarti, ", "Aarti, ", "Just wanted to say, ", "To my favorite person, ", "Hey beautiful, ", "Always remember, ", "My heart, ", "Every single day, "];
+        const middles = [
+            "you make my life so much brighter ", "I find myself missing your smile ", "you are the most amazing soul I know ", 
+            "thinking of you gives me so much strength ", "I am so incredibly lucky to have you ", "you are the peace in my busy life ", 
+            "I am counting down the moments until we meet ", "you deserve the entire world and more "
+        ];
+        const ends = ["and I love you more than words can say. ❤️", "and you are always in my prayers. 🙏", "and I'm sending you the biggest hug. 🤗", "and I'll be right here by your side forever. 💍", "and you are my everything. 🌟", "and I can't wait for our future together. 🥂"];
+
+        // Bonus "Special" Messages
+        const uniqueOnes = [
+            "Distance is just a number; my heart is right there with you. ❤️",
+            "Aarti, you are my home. 🏠",
+            "I ate a burger today and wished you were there to share it! 🍔",
+            "You are the best decision I ever made. 🥰",
+            "Thank you for being you. You're perfect just the way you are. ✨"
+        ];
+
+        function generateMessage() {
+            const display = document.getElementById('message-display');
+            display.style.opacity = 0;
+
+            setTimeout(() => {
+                let finalMsg;
+                // 30% chance of getting a handcrafted unique message
+                if (Math.random() < 0.3) {
+                    finalMsg = uniqueOnes[Math.floor(Math.random() * uniqueOnes.length)];
+                } else {
+                    // Mathematically generate a unique combination
+                    const s = starts[Math.floor(Math.random() * starts.length)];
+                    const m = middles[Math.floor(Math.random() * middles.length)];
+                    const e = ends[Math.floor(Math.random() * ends.length)];
+                    finalMsg = s + m + e;
+                }
+                
+                display.innerText = finalMsg;
+                display.style.opacity = 1;
+            }, 400);
+        }
+    </script>
+</body>
+</html>

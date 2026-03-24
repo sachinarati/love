@@ -3,103 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Aarti ❤️</title>
+    <title>For My Aarti ❤️</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap');
+
         :root {
-            --primary: #ff75c3;
-            --secondary: #ffa647;
-            --glass: rgba(255, 255, 255, 0.12);
-            --border: rgba(255, 255, 255, 0.2);
+            --rose: #ff758c;
+            --petal: #ff7eb3;
+            --gold: #feca57;
+            --soft-white: rgba(255, 255, 255, 0.9);
         }
 
         body {
             margin: 0; padding: 0; height: 100vh; display: flex;
             justify-content: center; align-items: center;
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: radial-gradient(circle at top right, #2c3e50, #000000);
-            color: white; overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffdee9 100%);
+            overflow: hidden;
         }
 
-        /* Floating Glow Effect */
-        .glow {
-            position: absolute; width: 400px; height: 400px;
-            background: radial-gradient(circle, var(--primary), transparent 70%);
-            filter: blur(100px); z-index: -1; opacity: 0.3;
-            animation: move 20s infinite alternate;
+        /* Floating Hearts Animation */
+        .heart-particle {
+            position: absolute; color: var(--rose);
+            opacity: 0.3; animation: floatUp 6s linear infinite;
+            pointer-events: none; z-index: 1;
         }
 
-        @keyframes move {
-            from { transform: translate(-30%, -30%); }
-            to { transform: translate(30%, 30%); }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
 
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border);
+        .main-card {
+            background: var(--soft-white);
+            backdrop-filter: blur(15px);
             border-radius: 40px;
-            padding: 50px 30px;
-            width: 85%; max-width: 420px;
+            padding: 45px 25px;
+            width: 85%; max-width: 380px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 45px rgba(255, 117, 140, 0.15);
+            border: 1px solid #ffffff;
+            position: relative; z-index: 10;
         }
 
-        h1 { font-weight: 300; font-size: 2rem; margin: 0; color: var(--primary); text-shadow: 0 0 15px rgba(255,117,195,0.5); }
-        .subtext { font-size: 0.8rem; opacity: 0.6; margin-bottom: 40px; letter-spacing: 1px; }
+        h1 { 
+            font-family: 'Dancing Script', cursive; 
+            font-size: 3.2rem; margin: 0; 
+            background: linear-gradient(to right, var(--rose), var(--petal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .divider {
+            width: 60px; height: 3px; background: var(--gold);
+            margin: 10px auto 25px; border-radius: 10px;
+        }
 
         #message-display {
-            font-size: 1.2rem; line-height: 1.6; min-height: 120px;
-            margin-bottom: 40px; display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.4s ease; font-weight: 400;
+            font-size: 1.1rem; line-height: 1.6; color: #444;
+            min-height: 120px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 30px;
+            padding: 0 15px; font-weight: 400;
+            transition: opacity 0.3s ease;
         }
 
         .btn {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none; padding: 18px 45px; border-radius: 100px;
-            color: white; font-weight: 600; font-size: 1rem;
-            cursor: pointer; box-shadow: 0 10px 20px rgba(255, 117, 195, 0.3);
-            transition: all 0.3s ease;
+            background: linear-gradient(45deg, var(--rose), var(--petal));
+            border: none; padding: 18px 0; border-radius: 100px;
+            color: white; font-weight: 600; font-size: 1.1rem;
+            cursor: pointer; box-shadow: 0 8px 25px rgba(255, 117, 140, 0.4);
+            transition: 0.3s; width: 85%;
         }
 
-        .btn:active { transform: scale(0.95); }
+        .btn:active { transform: scale(0.95); box-shadow: 0 4px 10px rgba(255, 117, 140, 0.2); }
 
         .signature {
-            margin-top: 50px; font-size: 0.75rem; opacity: 0.5;
-            padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px; font-size: 0.8rem; color: #999;
+            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .heart-icon { color: var(--rose); font-size: 1.2rem; margin-top: 8px; animation: pulse 1.5s infinite; }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <div class="glow"></div>
-    
-    <div class="glass-card">
+
+    <div class="main-card">
         <h1>For Aarti ❤️</h1>
-        <p class="subtext">A thousand reasons why you're special</p>
+        <div class="divider"></div>
         
-        <div id="message-display">Tap the button for a new message... ✨</div>
+        <div id="message-display">Tap the button for a piece of my heart... ✨</div>
         
-        <button class="btn" onclick="generateMessage()">New Message</button>
+        <button class="btn" onclick="generateMessage()">Send a Virtual Hug</button>
 
         <div class="signature">Made for Aarti with love from Sachin</div>
+        <div class="heart-icon">❤️</div>
     </div>
 
     <script>
-        const starts = ["My dearest Aarti, ", "Aarti, ", "Just wanted to say, ", "To my favorite person, ", "Hey beautiful, ", "Always remember, ", "My heart, ", "Every single day, "];
-        const middles = [
-            "you make my life so much brighter ", "I find myself missing your smile ", "you are the most amazing soul I know ", 
-            "thinking of you gives me so much strength ", "I am so incredibly lucky to have you ", "you are the peace in my busy life ", 
-            "I am counting down the moments until we meet ", "you deserve the entire world and more "
-        ];
-        const ends = ["and I love you more than words can say. ❤️", "and you are always in my prayers. 🙏", "and I'm sending you the biggest hug. 🤗", "and I'll be right here by your side forever. 💍", "and you are my everything. 🌟", "and I can't wait for our future together. 🥂"];
+        // Floating Heart Generator
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 2 + 4 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 500);
 
-        // Bonus "Special" Messages
-        const uniqueOnes = [
-            "Distance is just a number; my heart is right there with you. ❤️",
-            "Aarti, you are my home. 🏠",
-            "I ate a burger today and wished you were there to share it! 🍔",
-            "You are the best decision I ever made. 🥰",
-            "Thank you for being you. You're perfect just the way you are. ✨"
+        // Infinite Message Engine (500+ Combinations)
+        const starts = [
+            "My dearest Aarti, ", "Hey beautiful, ", "To my soulmate, ", "Aarti, ", 
+            "Thinking of you, ", "Just wanted to remind you, ", "To my world, ", "Every single day, "
+        ];
+        const middles = [
+            "you make every moment feel like a dream ", "I am so lucky to have you in my life ", 
+            "your smile is the only thing I need ", "you are the most amazing woman I know ", 
+            "you bring so much peace and joy to me ", "my love for you grows stronger ", 
+            "I find myself missing you more than ever ", "you are always in my thoughts "
+        ];
+        const ends = [
+            "and I love you more than words can say. ❤️", "and I'm sending you all my love. ✨", 
+            "and I can't wait to be with you again. 🤗", "and you mean everything to me. 💍", 
+            "and I'm so proud of who you are. 🌹", "and you are my forever and always. 🥂"
+        ];
+
+        const specialOnes = [
+            "Distance is just a test to see how far love can travel. We are winning. ❤️",
+            "I wish I could reach through the screen and give you the biggest hug. 🤗",
+            "Aarti, you are my home. No matter where I am, I'm with you. 🏠❤️",
+            "Every day apart is just one day closer to our next hello. ✈️🥰",
+            "You deserve all the happiness in the world today. I love you! 🌟"
         ];
 
         function generateMessage() {
@@ -108,20 +152,17 @@
 
             setTimeout(() => {
                 let finalMsg;
-                // 30% chance of getting a handcrafted unique message
-                if (Math.random() < 0.3) {
-                    finalMsg = uniqueOnes[Math.floor(Math.random() * uniqueOnes.length)];
+                if (Math.random() < 0.25) {
+                    finalMsg = specialOnes[Math.floor(Math.random() * specialOnes.length)];
                 } else {
-                    // Mathematically generate a unique combination
                     const s = starts[Math.floor(Math.random() * starts.length)];
                     const m = middles[Math.floor(Math.random() * middles.length)];
                     const e = ends[Math.floor(Math.random() * ends.length)];
                     finalMsg = s + m + e;
                 }
-                
                 display.innerText = finalMsg;
                 display.style.opacity = 1;
-            }, 400);
+            }, 300);
         }
     </script>
 </body>
